@@ -24,16 +24,22 @@ function App() {
     })
     
 
-   
+    if (robotArray.length === 0) {
+        return (
+            <div className = 'tc'>
+                <h1>LOADING</h1>
+            </div>
+        );
 
-    return (
-        <div className = 'tc'>
-                <h1 className  = '-m'>RoboFriends</h1>
-                <SearchBox setInput = {setInput}/>
-                <CardList robots = {filteredRobotArray}/>
-        </div>
-
-    );
+    } else {
+        return (
+            <div className = 'tc'>
+                    <h1 className  = '-m'>RoboFriends</h1>
+                    <SearchBox setInput = {setInput}/>
+                    <CardList robots = {filteredRobotArray}/>
+            </div>
+        );
+    }
 }
 
 export default App;
