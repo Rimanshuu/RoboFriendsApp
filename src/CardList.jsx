@@ -27,24 +27,29 @@ import Card from "./Card";
 
 const CardList = ({ robots }) => {
 
-
-    return (
-        <div>
-            {
-                robots.map((robot, i) => {
-                    console.log(robot, i);
-                    return(
-                        <Card 
-                        key = {i}
-                        id = {robots[i].id}
-                        name = {robots[i].name}
-                        email = {robots[i].email}
-                        /> 
-                    );
-                })
-            }
-        </div>
-    )
+    if (robots.length === 0) {
+        return(
+            <h1>Sorry, no results found ... : (</h1>
+        );
+    } else {        
+        return (
+            <div>
+                {
+                    robots.map((robot, i) => {
+                        console.log(robot, i);
+                        return(
+                            <Card 
+                            key = {i}
+                            id = {robots[i].id}
+                            name = {robots[i].name}
+                            email = {robots[i].email}
+                            /> 
+                        );
+                    })
+                }
+            </div>
+        )
+    } 
 }
 
 
