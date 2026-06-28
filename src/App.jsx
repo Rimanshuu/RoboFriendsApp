@@ -9,12 +9,15 @@ import CardList from "./CardList";
 function App() {
     const [input, setInput] = useState ('');
     const [robotArray, setRobotArray] = useState([]);
+    const [loadingState, setLoadingState] = useState(true);
 
      useEffect (() => {
-
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
-        .then(users => setRobotArray(users))
+        .then(users => {
+            setRobotArray(users)
+            setLoadingState(false)
+     })
     }, []);
 
     const filteredRobotArray = robotArray.filter((robot) => {
@@ -24,16 +27,22 @@ function App() {
     })
     
 
-   
+    if (loadingState) {
+        return (
+            <div className = ''>
+                <h1>LOADING</h1>
+            </div>
+        );
 
-    return (
-        <div className = 'tc'>
-                <h1 className  = '-m'>RoboFriends</h1>
-                <SearchBox setInput = {setInput}/>
-                <CardList robots = {filteredRobotArray}/>
-        </div>
-
-    );
+    } else {
+        return (
+            <div className = 'tc'>
+                    <h1 className  = '-m'>RoboFriends</h1>
+                    <SearchBox setInput = {setInput}/>
+                    <CardList robots = {filteredRobotArray}/>
+            </div>
+        );
+    }
 }
 
 export default App;
