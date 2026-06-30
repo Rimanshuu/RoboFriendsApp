@@ -35,14 +35,14 @@ const CardList = ({ robots }) => {
         return (
             <div>
                 {
-                    robots.map((robot, i) => {
-                        console.log(robot, i);
+                    robots.map((robot) => {
+                        //console.log(robot, i);
                         return(
                             <Card 
-                            key = {i}
-                            id = {robots[i].id}
-                            name = {robots[i].name}
-                            email = {robots[i].email}
+                            key = {robot.id}
+                            id = {robot.id}
+                            name = {`${robot.firstName} ${robot.lastName}`}
+                            email = {robot.email}
                             /> 
                         );
                     })

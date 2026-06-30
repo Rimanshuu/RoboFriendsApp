@@ -1,8 +1,9 @@
-import React, {  useState, useEffect } from "react";
+import {  useState, useEffect } from "react";
 import 'tachyons';
+import { useDebounce } from "./custom-hooks/useDebounce";
 import SearchBox from './SearchBox';
 import CardList from "./CardList";
-//import { robots } from './robots';
+
 
 
 
@@ -11,25 +12,27 @@ function App() {
     const [robotArray, setRobotArray] = useState([]);
     const [loadingState, setLoadingState] = useState(true);
 
+    const debouncedInput = useDebounce(input);
+
      useEffect (() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch(`https://dummyjson.com/users/search?q=${debouncedInput}`)
         .then(response => response.json())
-        .then(users => {
-            setRobotArray(users)
+        .then(data => {
+            setRobotArray(data.users)
             setLoadingState(false)
      })
-    }, []);
+    }, [debouncedInput]);
 
-    const filteredRobotArray = robotArray.filter((robot) => {
-        return(
-            robot.name.toLowerCase().includes(input.toLowerCase())
-        );
-    })
+    // const filteredRobotArray = robotArray.filter((robot) => {
+    //     return(
+    //         robot.name.toLowerCase().includes(input.toLowerCase())
+    //     );
+    // })
     
 
     if (loadingState) {
         return (
-            <div className = ''>
+            <div className = 'tc'>
                 <h1>LOADING</h1>
             </div>
         );
@@ -39,7 +42,7 @@ function App() {
             <div className = 'tc'>
                     <h1 className  = '-m'>RoboFriends</h1>
                     <SearchBox setInput = {setInput}/>
-                    <CardList robots = {filteredRobotArray}/>
+                    <CardList robots = {robotArray}/>
             </div>
         );
     }
