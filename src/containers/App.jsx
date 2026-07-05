@@ -3,6 +3,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import SearchBox from "../components/SearchBox";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
+import Footer from "../components/Footer";
 import { Cache } from "../utils/cache";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
                         : <CardList robots={displayedRobots} />
                     }
                 </Scroll>
+                <Footer />
             </div>
         );
     }

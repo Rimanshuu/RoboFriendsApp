@@ -137,3 +137,33 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  color: #555577;
+  font-size: 0.9rem;
+}
+
+.footer-name {
+  color: #00d9f5;
+  font-weight: 500;
+}
+
+.footer-btn {
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid #00d9f5;
+  color: #00d9f5;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footer-btn:hover {
+  background: #00d9f5;
+  color: #0d0d1a;
+}
