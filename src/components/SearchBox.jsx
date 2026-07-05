@@ -6,12 +6,12 @@ import React from "react";
 
 const SearchBox = ({setInput}) => {
     return (
-        <div className = 'pa3'>
-            <input 
-                className = 'tc pa3 ba b--green bg-lightest-blue'
-                type = 'search' 
-                placeholder = "Search Robots" 
-                onChange = {(event) => setInput(event.target.value)}
+        <div>
+            <input
+                className='search-input'
+                type='search'
+                placeholder='Search Robots'
+                onChange={(event) => setInput(event.target.value)}
             />
         </div>
     );

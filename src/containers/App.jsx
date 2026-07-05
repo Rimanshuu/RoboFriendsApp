@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "tachyons";
 import { useDebounce } from "../hooks/useDebounce";
 import SearchBox from "../components/SearchBox";
 import CardList from "../components/CardList";
@@ -36,21 +35,23 @@ function App() {
 
     if (loadingState) {
         return (
-        <div className="tc">
-            <h1>LOADING</h1>
-        </div>
+            <div className='app'>
+                <h1 className='app-title'>RoboFriends</h1>
+                <p className='status-message'>Loading...</p>
+            </div>
         );
     } else {
         return (
-        <div className="tc">
-            <h1 className="-m">RoboFriends</h1>
-            <SearchBox setInput={setInput} />
-            <Scroll> 
-                {
-                    isSearching? <h1>seraching ...</h1>:<CardList robots={displayedRobots} />
-                }    
-            </Scroll>
-        </div>
+            <div className='app'>
+                <h1 className='app-title'>RoboFriends</h1>
+                <SearchBox setInput={setInput} />
+                <Scroll>
+                    {isSearching
+                        ? <p className='status-message'>Searching...</p>
+                        : <CardList robots={displayedRobots} />
+                    }
+                </Scroll>
+            </div>
         );
     }
 }

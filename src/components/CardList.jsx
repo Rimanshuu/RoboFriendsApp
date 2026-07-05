@@ -29,11 +29,11 @@ const CardList = ({ robots }) => {
 
     if (robots.length === 0) {
         return(
-            <h1>Sorry, no results found ... : (</h1>
+            <h1 className='status-message'>Sorry, no results found :(</h1>
         );
-    } else {        
+    } else {
         return (
-            <div>
+            <div className='card-list'>
                 {
                     robots.map((robot) => {
                         //console.log(robot, i);
